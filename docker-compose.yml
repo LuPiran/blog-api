@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: blog-api
+    ports:
+      - "3000:3000"
+    environment:
+      - mongodb+srv://blogfiap105:Fiapblog%2B2025@cluster0.1iuh5qw.mongodb.net/blogdb?retryWrites=true&w=majority&appName=Cluster0
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev
