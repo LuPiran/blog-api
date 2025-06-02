@@ -23,6 +23,12 @@ jobs:
         run: npm install
 
       - name: ⚙️ Rodar testes
-        run: npm test
+        run: npm run test:coverage
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
+
+      - name: 📤 Enviar cobertura para Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/lcov.info
+          fail_ci_if_error: true
